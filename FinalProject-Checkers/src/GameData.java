@@ -55,7 +55,8 @@ public class GameData {
 		makeMove(move.getFromRow(), move.getFromCol(), move.getToRow(), move.getToCol());
 	}
 
-	private void makeMove(int fromRow, int fromCol, int toRow, int toCol) {
+	private boolean makeMove(int fromRow, int fromCol, int toRow, int toCol) {
+		boolean result = false;
 		
 		board[toRow][toCol] = board[fromRow][fromCol];
 		board[fromRow][fromCol] = EMPTY;
@@ -64,12 +65,15 @@ public class GameData {
 			int middleRow = (fromRow + toRow) / 2;
 			int middleCol = (fromCol + toCol) / 2;
 			board[middleRow][middleCol] = EMPTY;
+			result = true;
 		}
 		
 		if (toRow == 0 && board[toRow][toCol] == W_PAWN)
 			board[toRow][toCol] = W_KING;					//if reach backline, Promote piece
 		if (toRow == 7 && board[toRow][toCol] == R_PAWN)
 			board[toRow][toCol] = R_KING;
+		
+		return result;
 	}
 										//team represented by the corresponding Pawn IE R_PAWN = 1
 	public PieceMove[] getLegalMoves(int team) {
