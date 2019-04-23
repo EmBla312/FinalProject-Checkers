@@ -21,7 +21,11 @@ public class CheckersRunner {
 				team = 3;
 			}
 			else {
-				board.playerMove();
+				boolean result = board.playerMove();
+				
+				while (!result) {
+					result = board.playerMove();
+				}
 				team = 1;
 			}
 			System.out.println("\n");
