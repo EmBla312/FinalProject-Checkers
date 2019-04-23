@@ -51,6 +51,8 @@ public class PriorityQueue <T> {
 		if(!isEmpty()) {
 			data = firstNode.getData();
 			firstNode = firstNode.getNext();
+			
+			numberOfEntries--;
 		}
 		
 		return data;
