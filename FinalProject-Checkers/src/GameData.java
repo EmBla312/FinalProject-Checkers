@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class GameData {
@@ -55,8 +56,7 @@ public class GameData {
 		makeMove(move.getFromRow(), move.getFromCol(), move.getToRow(), move.getToCol());
 	}
 
-	private boolean makeMove(int fromRow, int fromCol, int toRow, int toCol) {
-		boolean result = false;
+	private void makeMove(int fromRow, int fromCol, int toRow, int toCol) {
 		
 		board[toRow][toCol] = board[fromRow][fromCol];
 		board[fromRow][fromCol] = EMPTY;
@@ -65,15 +65,12 @@ public class GameData {
 			int middleRow = (fromRow + toRow) / 2;
 			int middleCol = (fromCol + toCol) / 2;
 			board[middleRow][middleCol] = EMPTY;
-			result = true;
 		}
 		
 		if (toRow == 0 && board[toRow][toCol] == W_PAWN)
 			board[toRow][toCol] = W_KING;					//if reach backline, Promote piece
 		if (toRow == 7 && board[toRow][toCol] == R_PAWN)
 			board[toRow][toCol] = R_KING;
-		
-		return result;
 	}
 										//team represented by the corresponding Pawn IE R_PAWN = 1
 	public PieceMove[] getLegalMoves(int team) {
@@ -138,47 +135,47 @@ public class GameData {
 			return null;
 		
 		else { 
-					
-			PieceMove[] moveArray = moves.toArray();
+			PieceMove[] moveArray = new PieceMove[moves.size()];
+				for(int i = 0; i < moves.size(); i++)
+			 moveArray[i] = moves.get(i);
 		       
 		       return moveArray;
 		}
 	} // end getLegalMoves()
 	
 	//explain this method plz
-//	public PieceMove[] getLegalJumpsFrom(int team, int row, int col) {
-//		
-//		
-//		LinkedList<PieceMove> moves = new LinkedList<>();  
-//		
-//	    if (board[row][col] == team || board[row][col] == (team + 1)) {
-//	    	
-//	       if (canJump(team, row, col, row+1, col+1, row+2, col+2))
-//	          moves.add(new PieceMove(row, col, row+2, col+2));
-//	       
-//	       if (canJump(team, row, col, row-1, col+1, row-2, col+2))
-//	          moves.add(new PieceMove(row, col, row-2, col+2));
-//	       
-//	       if (canJump(team, row, col, row+1, col-1, row+2, col-2))
-//	          moves.add(new PieceMove(row, col, row+2, col-2));
-//	       
-//	       if (canJump(team, row, col, row-1, col-1, row-2, col-2))
-//	          moves.add(new PieceMove(row, col, row-2, col-2));
-//	    }
+	public PieceMove[] getLegalJumpsFrom(int team, int row, int col) {
+		
+		
+		LinkedList<PieceMove> moves = new LinkedList<>();  
+		
+	    if (board[row][col] == team || board[row][col] == (team + 1)) {
+	    	
+	       if (canJump(team, row, col, row+1, col+1, row+2, col+2))
+	          moves.add(new PieceMove(row, col, row+2, col+2));
+	       
+	       if (canJump(team, row, col, row-1, col+1, row-2, col+2))
+	          moves.add(new PieceMove(row, col, row-2, col+2));
+	       
+	       if (canJump(team, row, col, row+1, col-1, row+2, col-2))
+	          moves.add(new PieceMove(row, col, row+2, col-2));
+	       
+	       if (canJump(team, row, col, row-1, col-1, row-2, col-2))
+	          moves.add(new PieceMove(row, col, row-2, col-2));
+	    }
 	    
-//	    if (moves.isEmpty())
-//	       return null;
-//	    
-//	    else {
-//	    	
-//	       PieceMove[] moveArray = new PieceMove[moves.size()];
-//	       
-//	       for (int i = 0; i < moves.size(); i++)
-//	          moveArray[i] = (PieceMove)moves.get(i);
-//	       
-//	       return moveArray;
-//	    }
-//	}	//end legalJumps
+	    if (moves.isEmpty())
+	       return null;
+	    
+	    else {
+	    	
+	    	PieceMove[] moveArray = new PieceMove[moves.size()];
+			for(int i = 0; i < moves.size(); i++)
+				moveArray[i] = moves.get(i);
+	       
+	       return moveArray;
+	    }
+	}	//end legalJumps
 	
 	
 	private boolean canJump(int team, int fromRow, int fromCol, int middleRow, int middleCol, int toRow, int toCol) {
@@ -253,33 +250,24 @@ public class GameData {
 		
 		return weight;
 	}
-	public boolean playerMove() {
+	public PieceMove playerMove() {
+		
 		int fromRow = getFromRow();
 		int fromCol = getFromCol();
 		int toRow = getToRow();
 		int toCol = getToCol();
-
-		boolean result = false;
 		
-		if (fromRow == -1 || fromCol == -1 || toRow == -1 || toCol == -1 ) {
-			System.out.println("You can't move there. Try again: ");
-			result = false;
-		}
-		else {
-			result = makeMove(fromRow, fromCol, toRow, toCol);
-			
-		}
-		return result;
+		PieceMove newMove = new PieceMove(fromRow, fromCol, toRow, toCol);
+		return newMove;
 	}
 	
 	private int getToCol() {
 		System.out.println("Enter toCol");
 		int toCol = sc.nextInt();
 
-		if (toCol < 0 || toCol > 7) {
-			toCol = -1;
-//			System.out.println("You can't move there. Try again: ");
-//			toCol = sc.nextInt();
+		while (toCol < 0 || toCol > 7) {
+			System.out.println("You can't move there. Try again: ");
+			toCol = sc.nextInt();
 		}
 
 		return toCol;
