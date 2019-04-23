@@ -317,6 +317,23 @@ public class GameData {
 			System.out.println();
 		}
 	}
+	
+//need copyBoard method
+	
+	public LinkedList<GameData> getFutureBoards(GameData board, int team) {
+		PieceMove[] depth1array = board.getLegalMoves(team);
+		
+		LinkedList<GameData> depth1 = new LinkedList<GameData>();
+		
+		GameData cpyBoard = copyBoard(board);
+		
+		for (int i = 0; i < depth1array.length; i++) {
+			cpyBoard.makeMove(depth1array[i]);
+			depth1.add(cpyBoard);
+		}
+		
+		return depth1;
+	}
 }	
 
 
