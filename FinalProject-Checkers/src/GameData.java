@@ -253,13 +253,15 @@ public class GameData {
 		
 		return weight;
 	}
-	public void playerMove() {
+	public boolean playerMove() {
 		int fromRow = getFromRow();
 		int fromCol = getFromCol();
 		int toRow = getToRow();
 		int toCol = getToCol();
 
-		makeMove(fromRow, fromCol, toRow, toCol);
+		boolean result = makeMove(fromRow, fromCol, toRow, toCol);
+		
+		return result;
 	}
 	
 	private int getToCol() {
