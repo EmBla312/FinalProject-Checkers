@@ -259,8 +259,16 @@ public class GameData {
 		int toRow = getToRow();
 		int toCol = getToCol();
 
-		boolean result = makeMove(fromRow, fromCol, toRow, toCol);
+		boolean result = false;
 		
+		if (fromRow == -1 || fromCol == -1 || toRow == -1 || toCol == -1 ) {
+			System.out.println("You can't move there. Try again: ");
+			result = false;
+		}
+		else {
+			result = makeMove(fromRow, fromCol, toRow, toCol);
+			
+		}
 		return result;
 	}
 	
@@ -268,9 +276,10 @@ public class GameData {
 		System.out.println("Enter toCol");
 		int toCol = sc.nextInt();
 
-		while (toCol < 0 || toCol > 7) {
-			System.out.println("You can't move there. Try again: ");
-			toCol = sc.nextInt();
+		if (toCol < 0 || toCol > 7) {
+			toCol = -1;
+//			System.out.println("You can't move there. Try again: ");
+//			toCol = sc.nextInt();
 		}
 
 		return toCol;
