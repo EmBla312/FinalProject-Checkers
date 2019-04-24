@@ -11,14 +11,7 @@ public class AITestClass {
 		while(board.getLegalMoves(team) != null) {			
 			board.printBoard();
 			if(team == GameData.R_PAWN) {
-				/*legalMoves = board.getLegalMoves(team);
-
-				for(int i = 0; i < legalMoves.length; i++) {
-
-					pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
-				}				
-				board.makeMove(pq.remove());				
-				pq.clear();*/
+				
 				team = GameData.W_PAWN;
 			}
 			else {

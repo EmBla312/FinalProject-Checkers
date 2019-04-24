@@ -4,11 +4,13 @@ import java.util.Iterator;
 public class AITree {
 	Node root;
 
+	//constructs root and uses it to call makeTree
 	public AITree(int depth, GameData data) {
 		this.root = new Node(data);
 		makeTree(root, 1, 1);
 	}
 
+	//
 	public void aiMakeMove(GameData board) {
 		AITree thisTurn = new AITree(5, board);
 		thisTurn.evaluateLeaves(thisTurn.getRoot(), -1); //double-check team variable
@@ -17,6 +19,7 @@ public class AITree {
 		board = thisTurn.getRoot().getMaxChild();
 	}
 
+	//gets the team that the teamVariable refers to
 	private int getTeam(int teamVariable) {
 		if (teamVariable == -1 ) {
 			return GameData.R_PAWN;
@@ -27,6 +30,7 @@ public class AITree {
 
 	}
 
+	//constructs tree to depth of 5
 	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
 		if (depth < 5) {
 			int team = getTeam(teamVariable);
@@ -41,6 +45,7 @@ public class AITree {
 		}
 	}
 
+	//finds the point weight for the tree's leaves
 	private void evaluateLeaves(Node node, int teamVariable) {
 		if (node.isLeaf()) {
 			node.setPoint_weight(evaluateBoard(node.getData(), getTeam(teamVariable)));
@@ -54,6 +59,7 @@ public class AITree {
 		}
 	}
 
+	//finds the point weight for all nodes based on the leaves' point weight
 	private void evaluateRestOfTree(Node node, int teamVariable) {
 		if (node.getChild().isLeaf()) {
 			node.setPoint_weight(node.minChildWeight()); //can assume that the leaves will always be playerMoves
@@ -74,7 +80,7 @@ public class AITree {
 		}
 	}
 
-
+	//finds point weight for a single board
 	private int evaluateBoard(GameData board, int teamVariable) {
 		int board_weight = 0;
 		PieceMove[] boardPM = board.getLegalMoves(getTeam(teamVariable));
@@ -85,10 +91,12 @@ public class AITree {
 		return board_weight;
 	}
 
+	//adds node to tree
 	public void addChild(Node node, Node newNode) {
 		node.addChild(newNode);
 	}
 
+	//returns tree root
 	public Node getRoot() {
 		return this.root;
 	}
@@ -155,6 +163,7 @@ public class AITree {
 			}
 		}
 
+		//returns the max point weight in children
 		public int maxChildWeight() {
 			int max = -1001;
 
@@ -169,6 +178,7 @@ public class AITree {
 			return max;
 		}
 
+		//returns the min point weight in children
 		public int minChildWeight() {
 			int min = 1001;
 
@@ -183,6 +193,7 @@ public class AITree {
 			return min;
 		}
 
+		//returns the data of the node that has the max point weight
 		public GameData getMaxChild() {
 			int max = -1001;
 
