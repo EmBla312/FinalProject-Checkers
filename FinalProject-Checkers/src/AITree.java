@@ -65,6 +65,7 @@ public class AITree {
 			}
 		}
 	}
+	
 
 	private int evaluateBoard(GameData board, int teamVariable) {
 		int board_weight = 0;
@@ -142,6 +143,32 @@ public class AITree {
 			}
 		}
 		
-		
+		public int maxChildWeight() {
+			int max = -1001;
+			
+			Node currNode = this.child;
+			
+			while (currNode.getNext() != null) {
+				if (currNode.getPoint_weight() > max) {
+					max = currNode.getPoint_weight();
+				}
+				currNode = currNode.getNext();
+			}
+			return max;
+		}
+
+		public int minChildWeight() {
+			int min = 1001;
+			
+			Node currNode = this.child;
+			
+			while (currNode.getNext() != null) {
+				if (currNode.getPoint_weight() < min) {
+					min = currNode.getPoint_weight();
+				}
+				currNode = currNode.getNext();
+			}
+			return min;
+		}
 	}
 }
