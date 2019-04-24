@@ -3,12 +3,20 @@ import java.util.Iterator;
 
 public class AITree {
 	Node root;
-	
+
 	public AITree(int depth, GameData data) {
 		this.root = new Node(data);
 		makeTree(root, 1, 1);
 	}
-	
+
+	public void aiMakeMove(GameData board) {
+		AITree thisTurn = new AITree(5, board);
+		thisTurn.evaluateLeaves(thisTurn.getRoot(), -1); //double-check team variable
+		thisTurn.evaluateRestOfTree(thisTurn.getRoot(), -1);
+
+		board = thisTurn.getRoot().getMaxChild();
+	}
+
 	private int getTeam(int teamVariable) {
 		if (teamVariable == -1 ) {
 			return GameData.R_PAWN;
@@ -16,15 +24,15 @@ public class AITree {
 		else {
 			return GameData.W_PAWN;
 		}
-		
+
 	}
-	
+
 	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
 		if (depth < 5) {
 			int team = getTeam(teamVariable);
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
 			Iterator<GameData> iter = listChildren.iterator();
-			
+
 			while (iter.hasNext()) {
 				Node newNode = new Node(iter.next());
 				node.addChild(newNode);
@@ -32,7 +40,7 @@ public class AITree {
 			}
 		}
 	}
-	
+
 	private void evaluateLeaves(Node node, int teamVariable) {
 		if (node.isLeaf()) {
 			node.setPoint_weight(evaluateBoard(node.getData(), getTeam(teamVariable)));
@@ -45,7 +53,7 @@ public class AITree {
 			}
 		}
 	}
-	
+
 	private void evaluateRestOfTree(Node node, int teamVariable) {
 		if (node.getChild().isLeaf()) {
 			node.setPoint_weight(node.minChildWeight()); //can assume that the leaves will always be playerMoves
@@ -65,28 +73,32 @@ public class AITree {
 			}
 		}
 	}
-	
+
 
 	private int evaluateBoard(GameData board, int teamVariable) {
 		int board_weight = 0;
 		PieceMove[] boardPM = board.getLegalMoves(getTeam(teamVariable));
-		
+
 		for (int i = 0; i < boardPM.length; i++) {
 			board_weight += board.evaluateMove(boardPM, i);
 		}
 		return board_weight;
 	}
-	
+
 	public void addChild(Node node, Node newNode) {
 		node.addChild(newNode);
 	}
-	
+
+	public Node getRoot() {
+		return this.root;
+	}
+
 	private class Node {
 		private GameData  data;
 		private int point_weight;
 		private Node next;
 		private Node child;
-		
+
 		public Node(GameData data) {
 			this.data = data;
 			this.point_weight = 0;
@@ -121,7 +133,7 @@ public class AITree {
 		public void setNext(Node next) {
 			this.next = next;
 		}
-		
+
 
 		public Node getChild() {
 			return child;
@@ -134,20 +146,20 @@ public class AITree {
 			}
 			else {
 				Node currNode = this.child;
-				
+
 				while (currNode.getNext() != null) {
 					currNode = currNode.getNext();
 				}
-				
+
 				currNode.setNext(newChild);
 			}
 		}
-		
+
 		public int maxChildWeight() {
 			int max = -1001;
-			
+
 			Node currNode = this.child;
-			
+
 			while (currNode.getNext() != null) {
 				if (currNode.getPoint_weight() > max) {
 					max = currNode.getPoint_weight();
@@ -159,9 +171,9 @@ public class AITree {
 
 		public int minChildWeight() {
 			int min = 1001;
-			
+
 			Node currNode = this.child;
-			
+
 			while (currNode.getNext() != null) {
 				if (currNode.getPoint_weight() < min) {
 					min = currNode.getPoint_weight();
@@ -169,6 +181,23 @@ public class AITree {
 				currNode = currNode.getNext();
 			}
 			return min;
+		}
+
+		public GameData getMaxChild() {
+			int max = -1001;
+
+			Node currNode = this.child;
+			GameData bestBoard = currNode.getData();
+
+			while (currNode.getNext() != null) {
+				if (currNode.getPoint_weight() > max) {
+					max = currNode.getPoint_weight();
+					bestBoard = currNode.getData();
+				}
+				currNode = currNode.getNext();
+			}
+			
+			return bestBoard;
 		}
 	}
 }
