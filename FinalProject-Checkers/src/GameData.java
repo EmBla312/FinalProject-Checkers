@@ -16,7 +16,7 @@ public class GameData {
 	public GameData() {
 
 		board = new int[8][8];
-		setUpBoard();
+		setUpBoard();//take out of constructor
 	}
 	
 	public void setUpBoard() {	//renamed from setUp
@@ -318,14 +318,22 @@ public class GameData {
 		}
 	}
 	
-//need copyBoard method
+	public GameData copy(GameData original) {
+		GameData copy = new GameData();
+		for (int row = 0; row < original.board.length; row++) {
+			for (int col = 0; col < original.board[0].length; col++) {
+				copy.board[row][col] = original.board[row][col];
+			}
+		}
+		return copy;
+	}
 	
 	public LinkedList<GameData> getFutureBoards(GameData board, int team) {
 		PieceMove[] depth1array = board.getLegalMoves(team);
 		
 		LinkedList<GameData> depth1 = new LinkedList<GameData>();
 		
-		GameData cpyBoard = copyBoard(board);
+		GameData cpyBoard = copy(board);
 		
 		for (int i = 0; i < depth1array.length; i++) {
 			cpyBoard.makeMove(depth1array[i]);
