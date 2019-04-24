@@ -328,6 +328,7 @@ public class GameData {
 		return copy;
 	}
 	
+	//might need this to return an array instead
 	public LinkedList<GameData> getFutureBoards(GameData board, int team) {
 		PieceMove[] depth1array = board.getLegalMoves(team);
 		

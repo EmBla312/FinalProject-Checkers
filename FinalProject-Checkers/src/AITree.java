@@ -1,41 +1,47 @@
+import java.util.LinkedList;
 
 public class AITree {
 	Node root;
 	
-	public AITree(int depth, PieceMove[] data) {
+	public AITree(int depth, GameData data) {
 		this.root = new Node(data);
-		//makeTree(root, 1, GameData.);
+		makeTree(root, 1, GameData.W_PAWN);
 	}
 	
-	/*private void makeTree(Node node, int depth, int team) {
-		node.getData()
+	private void makeTree(Node node, int depth, int team) {
 		if (depth < 5) {
+			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
+			
+			for (int i = 0; i < listChildren.length(); i++) {
+				node.addChild(listChildren[i]);
+				makeTree(listchildren[i], depth + 1, team); //how do we alternate between teams?
+			}
 			
 		}
-	}*/
+	}
 	
-	public void addChild(Node node, PieceMove[] data) {
+	public void addChild(Node node, GameData data) {
 		node.addChild(data);
 	}
 	
 	private class Node {
-		private PieceMove[]  data;
+		private GameData  data;
 		private int point_weight;
 		private Node next;
 		private Node child;
 		
-		public Node(PieceMove[] data) {
+		public Node(GameData data) {
 			this.data = data;
 			this.point_weight = 0;
 			this.next = null;
 			this.child = null;
 		}
 
-		public PieceMove[] getData() {
+		public GameData getData() {
 			return data;
 		}
 
-		public void setData(PieceMove[] data) {
+		public void setData(GameData data) {
 			this.data = data;
 		}
 
@@ -59,7 +65,7 @@ public class AITree {
 			return child;
 		}
 
-		public void addChild(PieceMove[] data) {
+		public void addChild(GameData data) {
 			Node newChild = new Node(data);
 			if (this.child == null) {
 				this.child = newChild;
