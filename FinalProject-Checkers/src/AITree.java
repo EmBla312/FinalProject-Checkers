@@ -33,22 +33,22 @@ public class AITree {
 		}
 	}
 	
-	private void evaluateLeaves(Node node, int team) {
+	private void evaluateLeaves(Node node, int teamVariable) {
 		if (node.isLeaf()) {
-			node.setPoint_weight(evaluateBoard(node.getData(), team));
+			node.setPoint_weight(evaluateBoard(node.getData(), getTeam(teamVariable)));
 		}
 		else {
 			Node currNode = node.getChild();
 			while (currNode != null) {
-				evaluateLeaves(currNode, team*-1);
+				evaluateLeaves(currNode, teamVariable*-1);
 				currNode = currNode.getNext();
 			}
 		}
 	}
 
-	private int evaluateBoard(GameData board, int team) {
+	private int evaluateBoard(GameData board, int teamVariable) {
 		int board_weight = 0;
-		PieceMove[] boardPM = board.getLegalMoves(team);
+		PieceMove[] boardPM = board.getLegalMoves(getTeam(teamVariable));
 		
 		for (int i = 0; i < boardPM.length; i++) {
 			board_weight += board.evaluateMove(boardPM, i);
