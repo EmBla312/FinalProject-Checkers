@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Iterator;
 
 public class AITree {
 	Node root;
@@ -11,17 +12,19 @@ public class AITree {
 	private void makeTree(Node node, int depth, int team) {
 		if (depth < 5) {
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
+			Iterator<GameData> iter = listChildren.iterator();
 			
-			for (int i = 0; i < listChildren.length(); i++) {
-				node.addChild(listChildren[i]);
-				makeTree(listchildren[i], depth + 1, team); //how do we alternate between teams?
+			while (iter.hasNext()) {
+				Node newNode = new Node(iter.next());
+				node.addChild(newNode);
+				makeTree(newNode, depth + 1, team); //how do we alternate between teams?
 			}
 			
 		}
 	}
 	
-	public void addChild(Node node, GameData data) {
-		node.addChild(data);
+	public void addChild(Node node, Node newNode) {
+		node.addChild(newNode);
 	}
 	
 	private class Node {
@@ -65,8 +68,8 @@ public class AITree {
 			return child;
 		}
 
-		public void addChild(GameData data) {
-			Node newChild = new Node(data);
+		public void addChild(Node newChild) {
+			//Node newChild = new Node(data);
 			if (this.child == null) {
 				this.child = newChild;
 			}
