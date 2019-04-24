@@ -1,33 +1,41 @@
 
-public class AITree<T> {
+public class AITree {
 	Node root;
 	
-	public AITree(int depth) {
-		
+	public AITree(int depth, PieceMove[] data) {
+		this.root = new Node(data);
+		//makeTree(root, 1, GameData.);
 	}
 	
-	public void addChild(Node node, T data) {
+	/*private void makeTree(Node node, int depth, int team) {
+		node.getData()
+		if (depth < 5) {
+			
+		}
+	}*/
+	
+	public void addChild(Node node, PieceMove[] data) {
 		node.addChild(data);
 	}
 	
 	private class Node {
-		private T  data;
+		private PieceMove[]  data;
 		private int point_weight;
 		private Node next;
 		private Node child;
 		
-		public Node(T data) {
+		public Node(PieceMove[] data) {
 			this.data = data;
 			this.point_weight = 0;
 			this.next = null;
 			this.child = null;
 		}
 
-		public T getData() {
+		public PieceMove[] getData() {
 			return data;
 		}
 
-		public void setData(T data) {
+		public void setData(PieceMove[] data) {
 			this.data = data;
 		}
 
@@ -51,7 +59,7 @@ public class AITree<T> {
 			return child;
 		}
 
-		public void addChild(T data) {
+		public void addChild(PieceMove[] data) {
 			Node newChild = new Node(data);
 			if (this.child == null) {
 				this.child = newChild;
