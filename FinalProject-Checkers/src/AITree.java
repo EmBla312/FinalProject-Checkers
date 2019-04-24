@@ -6,37 +6,55 @@ public class AITree {
 	
 	public AITree(int depth, GameData data) {
 		this.root = new Node(data);
-		makeTree(root, 1, GameData.W_PAWN);
+		makeTree(root, 1, 1);
 	}
 	
-	public int getTeam(int team) {
-		if (team == GameData.R_PAWN) {
-			return -1;
+	private int getTeam(int teamVariable) {
+		if (teamVariable == -1 ) {
+			return GameData.R_PAWN;
 		}
 		else {
-			return 1;
+			return GameData.W_PAWN;
 		}
 		
 	}
 	
-	private void makeTree(Node node, int depth, int team) { //check this, then add evaluation of nodes when running
+	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
 		if (depth < 5) {
+			int team = getTeam(teamVariable);
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
 			Iterator<GameData> iter = listChildren.iterator();
 			
 			while (iter.hasNext()) {
 				Node newNode = new Node(iter.next());
 				node.addChild(newNode);
-				makeTree(newNode, depth + 1, team); //how do we alternate between teams?
+				makeTree(newNode, depth + 1, teamVariable * -1); //how do we alternate between teams?
 			}
 		}
 	}
 	
-//	private void evaluateTree(Node node) {
-//		while (!node.isLeaf()) {
-//			
-//		}
-//	}
+	private void evaluateLeaves(Node node, int team) {
+		if (node.isLeaf()) {
+			node.setPoint_weight(evaluateBoard(node.getData(), team));
+		}
+		else {
+			Node currNode = node.getChild();
+			while (currNode != null) {
+				evaluateLeaves(currNode, team*-1);
+				currNode = currNode.getNext();
+			}
+		}
+	}
+
+	private int evaluateBoard(GameData board, int team) {
+		int board_weight = 0;
+		PieceMove[] boardPM = board.getLegalMoves(team);
+		
+		for (int i = 0; i < boardPM.length; i++) {
+			board_weight += board.evaluateMove(boardPM, i);
+		}
+		return board_weight;
+	}
 	
 	public void addChild(Node node, Node newNode) {
 		node.addChild(newNode);
@@ -83,7 +101,7 @@ public class AITree {
 			this.next = next;
 		}
 
-		public Node getChildren() {
+		public Node getChild() {
 			return child;
 		}
 
