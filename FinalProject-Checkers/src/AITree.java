@@ -9,6 +9,16 @@ public class AITree {
 		makeTree(root, 1, GameData.W_PAWN);
 	}
 	
+	public int getTeam(int team) {
+		if (team == GameData.R_PAWN) {
+			return -1;
+		}
+		else {
+			return 1;
+		}
+		
+	}
+	
 	private void makeTree(Node node, int depth, int team) { //check this, then add evaluation of nodes when running
 		if (depth < 5) {
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
