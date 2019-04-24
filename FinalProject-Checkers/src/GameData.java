@@ -16,7 +16,7 @@ public class GameData {
 	public GameData() {
 
 		board = new int[8][8];
-		setUpBoard();//take out of constructor
+		setUpBoard();//take out of constructor//maybe not
 	}
 	
 	public void setUpBoard() {	//renamed from setUp

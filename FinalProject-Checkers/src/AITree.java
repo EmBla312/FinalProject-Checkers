@@ -10,13 +10,12 @@ public class AITree {
 		makeTree(root, 1, 1);
 	}
 
-	//
-	public void aiMakeMove(GameData board) {
-		AITree thisTurn = new AITree(5, board);
-		thisTurn.evaluateLeaves(thisTurn.getRoot(), -1); //double-check team variable
-		thisTurn.evaluateRestOfTree(thisTurn.getRoot(), -1);
 
-		board = thisTurn.getRoot().getMaxChild();
+	public void makeMove(GameData board) {
+		evaluateLeaves(this.root, -1); //double-check team variable
+		evaluateRestOfTree(this.root, -1);
+
+		board = this.root.getMaxChild();
 	}
 
 	//gets the team that the teamVariable refers to
@@ -29,6 +28,10 @@ public class AITree {
 		}
 
 	}
+	
+//	public void chooseMove(GameData board) {
+//		board = this.root.getMaxChild();
+//	}
 
 	//constructs tree to depth of 5
 	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
