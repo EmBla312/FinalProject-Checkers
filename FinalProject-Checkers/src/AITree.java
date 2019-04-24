@@ -9,7 +9,7 @@ public class AITree {
 		makeTree(root, 1, GameData.W_PAWN);
 	}
 	
-	private void makeTree(Node node, int depth, int team) {
+	private void makeTree(Node node, int depth, int team) { //check this, then add evaluation of nodes when running
 		if (depth < 5) {
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
 			Iterator<GameData> iter = listChildren.iterator();
@@ -19,9 +19,14 @@ public class AITree {
 				node.addChild(newNode);
 				makeTree(newNode, depth + 1, team); //how do we alternate between teams?
 			}
-			
 		}
 	}
+	
+//	private void evaluateTree(Node node) {
+//		while (!node.isLeaf()) {
+//			
+//		}
+//	}
 	
 	public void addChild(Node node, Node newNode) {
 		node.addChild(newNode);
@@ -38,6 +43,10 @@ public class AITree {
 			this.point_weight = 0;
 			this.next = null;
 			this.child = null;
+		}
+
+		public boolean isLeaf() {
+			return child == null;
 		}
 
 		public GameData getData() {
