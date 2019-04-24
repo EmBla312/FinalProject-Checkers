@@ -45,6 +45,26 @@ public class AITree {
 			}
 		}
 	}
+	
+	private void evaluateRestOfTree(Node node, int teamVariable) {
+		if (node.getChild().isLeaf()) {
+			node.setPoint_weight(node.minChildWeight()); //can assume that the leaves will always be playerMoves
+			//node.setPoint_weight(node.maxChild());
+		}
+		else {
+			Node currNode = node.getChild();
+			while (currNode != null) {
+				evaluateRestOfTree(currNode, teamVariable*-1);
+				currNode = currNode.getNext();
+			}
+			if (getTeam(teamVariable) == GameData.R_PAWN) {
+				node.setPoint_weight(node.minChildWeight());
+			}
+			else {
+				node.setPoint_weight(node.maxChildWeight());
+			}
+		}
+	}
 
 	private int evaluateBoard(GameData board, int teamVariable) {
 		int board_weight = 0;
@@ -100,6 +120,7 @@ public class AITree {
 		public void setNext(Node next) {
 			this.next = next;
 		}
+		
 
 		public Node getChild() {
 			return child;
