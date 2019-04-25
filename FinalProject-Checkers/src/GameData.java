@@ -2,7 +2,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class GameData {
-	private Scanner sc = new Scanner(System.in);
 	
 	public static final int EMPTY = 0;
 	public static final int R_PAWN = 1;
@@ -245,64 +244,7 @@ public class GameData {
 		
 		return weight;
 	}
-	public PieceMove playerMove() {
-		
-		int fromRow = getFromRow();
-		int fromCol = getFromCol();
-		int toRow = getToRow();
-		int toCol = getToCol();
-		
-		PieceMove newMove = new PieceMove(fromRow, fromCol, toRow, toCol);
-		return newMove;
-	}
-	
-	private int getToCol() {
-		System.out.println("Enter toCol");
-		int toCol = sc.nextInt();
 
-		while (toCol < 0 || toCol > 7) {
-			System.out.println("You can't move there. Try again: ");
-			toCol = sc.nextInt();
-		}
-
-		return toCol;
-	}
-
-	private int getToRow() {
-		System.out.println("Enter toRow");
-		int toRow = sc.nextInt();
-
-		while (toRow < 0 || toRow > 7) {
-			System.out.println("You can't move there. Try again: ");
-			toRow = sc.nextInt();
-		}
-
-		return toRow;
-	}
-
-	private int getFromRow() {
-		System.out.println("Enter fromRow");
-		int fromRow = sc.nextInt();
-
-		while (fromRow < 0 || fromRow > 7) {
-			System.out.println("You can't move there. Try again: ");
-			fromRow = sc.nextInt();
-		}
-
-		return fromRow;
-	}
-
-	private int getFromCol() {
-		System.out.println("Enter fromCol");
-		int fromCol = sc.nextInt();
-
-		while (fromCol < 0 || fromCol > 7) {
-			System.out.println("You can't move there. Try again: ");
-			fromCol = sc.nextInt();
-		}
-
-		return fromCol;
-	}
 	public void printBoard() {
 
 		for(int row = 0; row < board.length; row++) {
