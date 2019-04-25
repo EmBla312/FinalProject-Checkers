@@ -42,8 +42,20 @@ public class Runner {
 	private static void playEasy() {
 		team = 3;	//let player go first
 		
-		while(!board.isGameOver(team)) {			
+		while(!board.isGameOver(team)) {
+			if(team == GameData.R_PAWN) {
+				System.out.println("========================================");
+				System.out.println("MY MOVE");
+				System.out.println("========================================");
+			}
+			else {
+				System.out.println("========================================");
+				System.out.println("YOUR MOVE");
+				System.out.println("========================================");
+			}
+				
 			board.printBoard();
+			
 			if(team == GameData.R_PAWN) {
 				legalMoves = board.getLegalMoves(team);
 				
@@ -78,17 +90,35 @@ public class Runner {
 			System.out.println("\n");
 		}	
 		
-		System.out.println("GAME OVER.");
+		String winner;
+		if(team == GameData.R_PAWN)
+			winner = "AI";
+		else
+			winner = "You";
+		System.out.println("GAME OVER. " + winner + " wins.");
 		
 	}
 	
 	private static void playHard() {
 		team = 3;	//let player go first
 		
-		while(!board.isGameOver(team)) {			
-			board.printBoard();
+		while(!board.isGameOver(team)) {
+			
 			if(team == GameData.R_PAWN) {
-				thisTurn = new AITree(5, board);
+				System.out.println("========================================");
+				System.out.println("MY MOVE");
+				System.out.println("========================================");
+			}
+			else {
+				System.out.println("========================================");
+				System.out.println("YOUR MOVE");
+				System.out.println("========================================");
+			}
+			
+			board.printBoard();
+			
+			if(team == GameData.R_PAWN) {
+				thisTurn = new AITree(200, board);
 				board = thisTurn.makeMove();
 								
 				team = GameData.W_PAWN;
@@ -117,7 +147,12 @@ public class Runner {
 			System.out.println("\n");
 		}	
 		
-		System.out.println("GAME OVER.");
+		String winner;
+		if(team == GameData.R_PAWN)
+			winner = "AI";
+		else
+			winner = "You";
+		System.out.println("GAME OVER. " + winner + " wins.");
 		
 	}
 	
@@ -140,7 +175,7 @@ public class Runner {
 	}
 	
 	private static int getToCol() {
-		System.out.println("Enter toCol");
+		System.out.println("Enter toCol:");
 		int toCol = sc.nextInt();
 
 		while (toCol < 0 || toCol > 7) {
@@ -152,7 +187,7 @@ public class Runner {
 	}
 
 	private static int getToRow() {
-		System.out.println("Enter toRow");
+		System.out.println("Enter toRow:");
 		int toRow = sc.nextInt();
 
 		while (toRow < 0 || toRow > 7) {
@@ -164,7 +199,7 @@ public class Runner {
 	}
 
 	private static int getFromRow() {
-		System.out.println("Enter fromRow");
+		System.out.println("Enter fromRow:");
 		int fromRow = sc.nextInt();
 
 		while (fromRow < 0 || fromRow > 7) {
@@ -176,7 +211,7 @@ public class Runner {
 	}
 
 	private static int getFromCol() {
-		System.out.println("Enter fromCol");
+		System.out.println("Enter fromCol:");
 		int fromCol = sc.nextInt();
 
 		while (fromCol < 0 || fromCol > 7) {

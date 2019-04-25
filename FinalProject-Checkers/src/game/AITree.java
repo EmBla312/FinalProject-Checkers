@@ -36,7 +36,7 @@ public class AITree {
 
 	//constructs tree to depth of 5
 	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
-		if (depth < 5) {
+		if (depth < 9) {
 			int team = getTeam(teamVariable);
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
 			Iterator<GameData> iter = listChildren.iterator();
