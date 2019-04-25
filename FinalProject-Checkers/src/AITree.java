@@ -32,10 +32,6 @@ public class AITree {
 		}
 
 	}
-	
-//	public void chooseMove(GameData board) {
-//		board = this.root.getMaxChild();
-//	}
 
 	//constructs tree to depth of 5
 	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
@@ -47,7 +43,7 @@ public class AITree {
 			while (iter.hasNext()) {
 				Node newNode = new Node(iter.next());
 				node.addChild(newNode);
-				makeTree(newNode, depth + 1, teamVariable * -1); //how do we alternate between teams?
+				makeTree(newNode, depth + 1, teamVariable * -1); //alternates between teams for each recursive call
 			}
 		}
 	}
@@ -70,7 +66,6 @@ public class AITree {
 	private void evaluateRestOfTree(Node node, int teamVariable) {
 		if (node.getChild().isLeaf()) {
 			node.setPoint_weight(node.minChildWeight()); //can assume that the leaves will always be playerMoves
-			//node.setPoint_weight(node.maxChild());
 		}
 		else {
 			Node currNode = node.getChild();

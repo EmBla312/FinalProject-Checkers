@@ -4,35 +4,34 @@ import java.util.Scanner;
 public class GameData {
 	private Scanner sc = new Scanner(System.in);
 	
-	//moved from Tile to GameData
 	public static final int EMPTY = 0;
 	public static final int R_PAWN = 1;
 	public static final int R_KING = 2;
 	public static final int W_PAWN = 3;
 	public static final int W_KING = 4;
 
-	private int[][] board; 	//changed from Tile to Int
+	private int[][] board; 
 
 	public GameData() {
 
 		board = new int[8][8];
-		setUpBoard();//take out of constructor//maybe not
+		setUpBoard();
 	}
 	
-	public void setUpBoard() {	//renamed from setUp
+	public void setUpBoard() {
 
 		for (int row = 0; row < 8; row++) {
 			for (int col = 0; col < 8; col++) {
 				if ( row % 2 != col % 2 ) {
 					if (row < 3)
-						board[row][col] = R_PAWN;	//No tile objects now, only INTS
+						board[row][col] = R_PAWN;
 					else if (row > 4)
 						board[row][col] = W_PAWN;
 					else
 						board[row][col] = EMPTY;
 				}
 				else {
-					board[row][col] = EMPTY;	//nonPlayable squares are EMPTY not invalid
+					board[row][col] = EMPTY;
 				}
 			}
 		}
@@ -40,12 +39,12 @@ public class GameData {
 
 	public int pieceAt(int row, int col) {
 		
-		return board[row][col];			//condensed get fromRow/Col toRow/Col
+		return board[row][col];		
 	}
 	
 	public void setPieceAt(int row, int col, int piece) {
 		
-		board[row][col] = piece;	//condensed from Tile class which we are removing
+		board[row][col] = piece;
 	}
 	
 	public boolean isKing(int fromRow, int fromCol) {
@@ -77,8 +76,6 @@ public class GameData {
 	 //the moves linkedlist can then be passed into a stack entry by entry.
 	
 		LinkedList<PieceMove> moves = new LinkedList<>(); //all moves stored here 
-		//IM USING JAVA'S LINKEDLIST METHODS
-		//use stack instead?????
 		
 		//Checks if any piece on a team can jump 
 		for(int row = 0; row < board.length; row++) {
@@ -126,8 +123,6 @@ public class GameData {
 		                
 				}
 			}
-			//Need point values given to each of these PieceMoves so we can do an evaluation of which Move to do
-				//method: evalBestMove() ??????????????
 		}
 		
 		//if no moves it'll return null, else copy all moves into an array and return it.
@@ -328,7 +323,6 @@ public class GameData {
 		return copy;
 	}
 	
-	//might need this to return an array instead
 	public LinkedList<GameData> getFutureBoards(GameData board, int team) {
 		PieceMove[] depth1array = board.getLegalMoves(team);
 		

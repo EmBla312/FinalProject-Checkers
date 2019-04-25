@@ -4,7 +4,6 @@ public class CheckersRunner {
 
 	public static void main(String[] args) {
 		GameData board = new GameData();
-		//AITree test = new AITree(5, board);
 		int team = 3;
 		PieceMove[] legalMoves;
 		PriorityQueue<PieceMove> pq = new PriorityQueue<>();
