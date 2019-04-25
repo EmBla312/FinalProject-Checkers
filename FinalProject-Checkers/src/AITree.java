@@ -12,11 +12,14 @@ public class AITree {
 
 
 	//copies board of chosen node to GameData Board in runner
-	public void makeMove(GameData board) {
+	public GameData makeMove(GameData board) {
 		evaluateLeaves(this.root, -1); //double-check team variable
 		evaluateRestOfTree(this.root, -1);
 
-		board = this.root.getMaxChild();
+		GameData newBoard = this.root.getMaxChild();
+		
+		return newBoard;
+		
 	}
 
 	//gets the team that the teamVariable refers to
@@ -169,7 +172,7 @@ public class AITree {
 
 		//returns the max point weight in children
 		public int maxChildWeight() {
-			int max = -1001;
+			int max = this.child.getPoint_weight();
 
 			Node currNode = this.child;
 
@@ -184,7 +187,7 @@ public class AITree {
 
 		//returns the min point weight in children
 		public int minChildWeight() {
-			int min = 1001;
+			int min = this.child.getPoint_weight();
 
 			Node currNode = this.child;
 
@@ -199,7 +202,7 @@ public class AITree {
 
 		//returns the data of the node that has the max point weight
 		public GameData getMaxChild() {
-			int max = -1001;
+			int max = this.child.getPoint_weight();
 
 			Node currNode = this.child;
 			GameData bestBoard = currNode.getData();
