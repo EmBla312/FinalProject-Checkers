@@ -12,7 +12,7 @@ public class AITree {
 
 
 	//copies board of chosen node to GameData Board in runner
-	public GameData makeMove(GameData board) {
+	public GameData makeMove() {
 		evaluateLeaves(this.root, -1); //double-check team variable
 		evaluateRestOfTree(this.root, -1);
 
