@@ -45,7 +45,6 @@ public class GameData {
 		
 		return board[row][col];		
 	}
-	
 	public void setPieceAt(int row, int col, int piece) {
 		
 		board[row][col] = piece;

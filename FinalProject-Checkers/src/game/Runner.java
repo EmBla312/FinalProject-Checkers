@@ -30,40 +30,77 @@ public class Runner {
 		
 		chooseLevel();
 		
+		switch(level) {
+		case 1:
+			playEasy();
+			break;
+		case 2:
+			playHard();
+			break;
+		}
+	}
+	private static void playEasy() {
 		team = 3;	//let player go first
 		
 		while(!board.isGameOver(team)) {			
 			board.printBoard();
 			if(team == GameData.R_PAWN) {
-				switch(level) {
-				case 1:
-					legalMoves = board.getLegalMoves(team);
-					
-					for(int i = 0; i < legalMoves.length; i++) {
-		
-						pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
-					}				
-					board.makeMove(pq.remove());				
-					pq.clear();
-					break;
-				case 2:
-					thisTurn = new AITree(5, board);
-					board = thisTurn.makeMove();
-					break;
-					
+				legalMoves = board.getLegalMoves(team);
+				
+				for(int i = 0; i < legalMoves.length; i++) {
+	
+					pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
 				}				
+				board.makeMove(pq.remove());				
+				pq.clear();
+				
 				team = GameData.W_PAWN;
 			}
+			
 			else {
 				legalMoves = board.getLegalMoves(team);
 				boolean illegalMove = true;
 				do {
 					PieceMove tempMove = playerMove();
 					for(int i = 0; i < legalMoves.length; i++) {
-						if(tempMove.getFromRow() == legalMoves[i].getFromRow() &&
-								tempMove.getFromCol() == legalMoves[i].getFromCol() &&
-								tempMove.getToRow() == legalMoves[i].getToRow() &&
-								tempMove.getToCol() == legalMoves[i].getToCol()) {
+						if(isValidMove(tempMove, i)) {
+							board.makeMove(tempMove);
+							illegalMove = false;
+						}						
+					}
+					if(illegalMove)
+						System.out.println("Invalid Entry. Try again. \n");
+				
+				}while(illegalMove);
+				
+				team = GameData.R_PAWN;
+			}
+			System.out.println("\n");
+		}	
+		
+		System.out.println("GAME OVER.");
+		
+	}
+	
+	private static void playHard() {
+		team = 3;	//let player go first
+		
+		while(!board.isGameOver(team)) {			
+			board.printBoard();
+			if(team == GameData.R_PAWN) {
+				thisTurn = new AITree(5, board);
+				board = thisTurn.makeMove();
+								
+				team = GameData.W_PAWN;
+			}
+			
+			else {
+				legalMoves = board.getLegalMoves(team);
+				boolean illegalMove = true;
+				do {
+					PieceMove tempMove = playerMove();
+					for(int i = 0; i < legalMoves.length; i++) {
+						if(isValidMove(tempMove, i)) {
 							board.makeMove(tempMove);
 							illegalMove = false;
 						}
@@ -78,10 +115,19 @@ public class Runner {
 				team = GameData.R_PAWN;
 			}
 			System.out.println("\n");
-		}
+		}	
 		
 		System.out.println("GAME OVER.");
+		
 	}
+	
+	private static boolean isValidMove(PieceMove tempMove, int i) {
+		return tempMove.getFromRow() == legalMoves[i].getFromRow() &&
+				tempMove.getFromCol() == legalMoves[i].getFromCol() &&
+				tempMove.getToRow() == legalMoves[i].getToRow() &&
+				tempMove.getToCol() == legalMoves[i].getToCol();
+	}
+	
 	private static PieceMove playerMove() {
 		
 		int fromRow = getFromRow();
