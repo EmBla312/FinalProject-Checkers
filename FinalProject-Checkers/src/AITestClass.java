@@ -25,7 +25,7 @@ public class AITestClass {
 			board.printBoard();
 			if(team == GameData.R_PAWN) {
 				thisTurn = new AITree(5, board);
-				board = thisTurn.makeMove(board);
+				board = thisTurn.makeMove();
 //				legalMoves = board.getLegalMoves(team);
 //	
 //				for(int i = 0; i < legalMoves.length; i++) {
