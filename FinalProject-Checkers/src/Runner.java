@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AITestClass {
+public class Runner {
 	private static int level;
 	private static GameData board = new GameData();
 	private static int team;
