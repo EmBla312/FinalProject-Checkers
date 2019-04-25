@@ -1,5 +1,6 @@
 # FinalProject-Checkers
 CS220 - Programming w/ Data Structures Final Group Project (Spring 2019)
+
 Collaborators: Emma Blackwell, Claire Fettig, Mason Nightlinger
 
 Description:
