@@ -26,19 +26,20 @@ public class AITestClass {
 			if(team == GameData.R_PAWN) {
 				switch(level) {
 				case 1:
+					legalMoves = board.getLegalMoves(team);
+					
+					for(int i = 0; i < legalMoves.length; i++) {
+		
+						pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
+					}				
+					board.makeMove(pq.remove());				
+					pq.clear();
+					break;
+				case 2:
 					thisTurn = new AITree(5, board);
 					board = thisTurn.makeMove();
 					break;
-				case 2:
-					legalMoves = board.getLegalMoves(team);
 					
-								for(int i = 0; i < legalMoves.length; i++) {
-					
-									pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
-								}				
-								board.makeMove(pq.remove());				
-								pq.clear();
-								break;
 				}				
 				team = GameData.W_PAWN;
 			}
