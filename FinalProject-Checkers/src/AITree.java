@@ -7,7 +7,7 @@ public class AITree {
 	//constructs root and uses it to call makeTree
 	public AITree(int depth, GameData data) {
 		this.root = new Node(data);
-		makeTree(root, 1, 1);
+		makeTree(root, 1, -1);
 	}
 
 

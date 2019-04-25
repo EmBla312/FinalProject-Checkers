@@ -339,6 +339,7 @@ public class GameData {
 		for (int i = 0; i < depth1array.length; i++) {
 			cpyBoard.makeMove(depth1array[i]);
 			depth1.add(cpyBoard);
+			cpyBoard = copy(board);
 		}
 		
 		return depth1;
