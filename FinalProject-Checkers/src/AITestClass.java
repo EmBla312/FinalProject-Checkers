@@ -2,16 +2,20 @@ import java.util.Scanner;
 
 public class AITestClass {
 	private static int level;
+	private static GameData board = new GameData();
+	private static int team;
 	private static Scanner sc = new Scanner(System.in);
-
-	public static void main(String[] args) {
+	private static PriorityQueue<PieceMove> pq = new PriorityQueue<>();
+	private static PieceMove[] legalMoves;
+	private static AITree thisTurn;
+	
+	public static void main(String[] args) {			
 		
-		GameData board = new GameData();
-		int team = 3;
-		PieceMove[] legalMoves;
-		AITree thisTurn;
-		PriorityQueue<PieceMove> pq = new PriorityQueue<>();
-
+		playCheckers();	
+		
+	}
+	
+	private static void chooseLevel() {
 		do {
 			System.out.println("What level would you like to play?\n"
 					+ "[1]Easy\n"
@@ -20,8 +24,14 @@ public class AITestClass {
 			level = sc.nextInt();
 			
 		}while(level < 1 || level > 2);
+	}
+	private static void playCheckers() {
 		
-		while(board.getLegalMoves(team) != null) {			
+		chooseLevel();
+		
+		team = 3;	//let player go first
+		
+		while(!board.isGameOver(team)) {			
 			board.printBoard();
 			if(team == GameData.R_PAWN) {
 				switch(level) {
@@ -68,8 +78,9 @@ public class AITestClass {
 			}
 			System.out.println("\n");
 		}
+		
+		System.out.println("GAME OVER.");
 	}
-	
 	private static PieceMove playerMove() {
 		
 		int fromRow = getFromRow();
