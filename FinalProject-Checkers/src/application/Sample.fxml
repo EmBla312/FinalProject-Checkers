@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BoardController">
+   <center>
+      <AnchorPane prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane id="grdBoard" fx:id="CheckersBoard" prefHeight="800.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Rectangle id="Tile01" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="1">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile03" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="3">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile05" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="5">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile07" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="7">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile10" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.rowIndex="1">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile12" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile14" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile16" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile21" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile23" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile25" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile27" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile30" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.rowIndex="3">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile32" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile34" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile36" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile41" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile43" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile45" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile47" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile50" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.rowIndex="5">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile52" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile54" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile56" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile61" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile63" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile65" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile67" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="7" GridPane.rowIndex="6">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile70" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.rowIndex="7">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile72" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile74" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <Rectangle id="Tile77" fill="#e8d9c5" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                     <effect>
+                        <Lighting diffuseConstant="1.05" specularConstant="1.18" specularExponent="14.15" surfaceScale="2.6">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Rectangle>
+                  <!-- R_PAWNS01 is a prototype of what a "Kinged" red piece would have. Either I set stroke to 100 if a piece becomes a king, 
+                  or I create 32 * 2 more Circles with the finite stroke size and gradient. Figure out what would be best...(also see W_PAWN50 for "Kinged" white piece -->
+                  <Circle id="R_PAWNS01" fill="RED" radius="40.0" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                     <stroke>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.6463414634146342">
+                           <stops>
+                              <Stop color="GOLD" />
+                              <Stop color="RED" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </stroke>
+                  </Circle>
+                  <Circle id="R_PAWNS03" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS05" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS07" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS10" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS12" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS14" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS16" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS21" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS23" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS25" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="R_PAWNS27" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS70" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS72" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS74" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS76" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS61" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS63" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS65" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS67" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS50" fill="WHITE" radius="40.0" strokeType="INSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                     <stroke>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="GOLD" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </stroke>
+                  </Circle>
+                  <Circle id="W_PAWNS52" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS54" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="W_PAWNS56" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI50" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.rowIndex="5">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI52" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI54" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI56" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI61" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI63" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI65" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI67" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="6">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI70" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.rowIndex="7">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI72" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI74" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI76" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI01" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI03" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI05" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI07" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI01" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI12" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI14" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI16" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI21" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI23" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI25" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI27" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI30" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.rowIndex="3">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI32" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI34" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI36" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI30" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI32" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI34" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI36" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI41" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI43" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI45" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="RP_INVISI47" fill="RED" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI41" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI43" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI45" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+                  <Circle id="WP_INVISI47" fill="WHITE" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <effect>
+                        <InnerShadow choke="0.37" height="38.49" offsetY="-4.0" radius="13.010000000000002" width="15.55" />
+                     </effect>
+                  </Circle>
+               </children>
+            </GridPane>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
