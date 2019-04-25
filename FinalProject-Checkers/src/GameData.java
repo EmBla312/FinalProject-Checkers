@@ -35,7 +35,11 @@ public class GameData {
 			}
 		}
 	}//end setUpBoard()
-
+	
+	public boolean isGameOver(int team) {
+		PieceMove[] legalMoves = getLegalMoves(team);
+		return legalMoves == null;
+	}
 	public int pieceAt(int row, int col) {
 		
 		return board[row][col];		
