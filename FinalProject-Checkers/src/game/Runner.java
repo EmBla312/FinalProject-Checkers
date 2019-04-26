@@ -20,11 +20,12 @@ public class Runner {
 		do {
 			System.out.println("What level would you like to play?\n"
 					+ "[1]Easy\n"
-					+ "[2]Hard\n");
+					+ "[2]Medium\n"
+					+ "[3]Hard\n");
 			
 			level = sc.nextInt();
 			
-		}while(level < 1 || level > 2);
+		}while(level < 1 || level > 3);
 	}
 	private static void playCheckers() {
 		
@@ -33,6 +34,9 @@ public class Runner {
 		switch(level) {
 		case 1:
 			playEasy();
+			break;
+		case 3:
+			playMed();
 			break;
 		case 2:
 			playHard();
@@ -99,6 +103,67 @@ public class Runner {
 			winner = "You";
 		System.out.println("GAME OVER. " + winner + " wins.");
 		
+	}
+	
+	private static void playMed() {
+		team = 3;	//let player go first
+		
+		while(!board.isGameOver(team)) {
+			System.out.println("========================================");
+				
+			board.printBoard();
+			
+			if(team == GameData.R_PAWN) {
+				System.out.println("========================================");
+				System.out.println("MY MOVE");
+				System.out.println("========================================");
+			}
+			else {
+				System.out.println("========================================");
+				System.out.println("YOUR MOVE");
+				System.out.println("========================================");
+			}
+			
+			if(team == GameData.R_PAWN) {
+				legalMoves = board.getLegalMoves(team);
+				
+				for(int i = 0; i < legalMoves.length; i++) {
+	
+					pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
+				}				
+				board.makeMove(pq.removeBack());				
+				pq.clear();
+				
+				team = GameData.W_PAWN;
+			}
+			
+			else {
+				legalMoves = board.getLegalMoves(team);
+				boolean illegalMove = true;
+				do {
+					PieceMove tempMove = playerMove();
+					for(int i = 0; i < legalMoves.length; i++) {
+						if(isValidMove(tempMove, i)) {
+							board.makeMove(tempMove);
+							illegalMove = false;
+						}						
+					}
+					if(illegalMove)
+						System.out.println("Invalid Entry. Try again. \n");
+				
+				}while(illegalMove);
+				
+				team = GameData.R_PAWN;
+			}
+			System.out.println("\n");
+		}	
+		
+		String winner;
+		if(team == GameData.R_PAWN)
+			winner = "AI";
+		else
+			winner = "You";
+		System.out.println("GAME OVER. " + winner + " wins.");
 	}
 	
 	private static void playHard() {
