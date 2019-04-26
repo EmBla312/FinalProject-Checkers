@@ -135,7 +135,7 @@ public class GameData {
 		else { 
 			PieceMove[] moveArray = new PieceMove[moves.size()];
 				for(int i = 0; i < moves.size(); i++)
-			 moveArray[i] = moves.get(i);
+						moveArray[i] = moves.get(i);
 		       
 		       return moveArray;
 		}
