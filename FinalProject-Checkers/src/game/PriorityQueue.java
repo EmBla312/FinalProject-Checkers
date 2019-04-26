@@ -59,6 +59,21 @@ public class PriorityQueue <T> {
 		return data;
 		
 	}
+	public T removeBack() {
+		T data = null;
+		if(!isEmpty()) {
+			QNode currNode = firstNode;
+			while(currNode.getNext() != null) {
+				currNode = currNode.getNext();
+			}
+			
+			data = currNode.getData();
+			currNode.getPrev().setNext(currNode.getNext());
+			numberOfEntries--;
+		}
+		
+		return data;
+	}
 	public boolean remove(T data) {
 		QNode currNode = firstNode;
 		boolean removed = false;
