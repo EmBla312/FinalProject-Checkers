@@ -87,7 +87,13 @@ public class AITree {
 	private int evaluateBoard(GameData board, int teamVariable) {
 		int board_weight = 0;
 		PieceMove[] boardPM = board.getLegalMoves(getTeam(teamVariable));
-
+		PieceMove[] boardPlayer = board.getLegalMoves(getTeam(teamVariable*-1));
+		if(boardPlayer.length == 0) {
+			board_weight += 1000;
+		}
+		if(boardPM.length == 0) {
+			board_weight -= 1000;
+		}
 		for (int i = 0; i < boardPM.length; i++) {
 			board_weight += board.evaluateMove(boardPM, i);
 		}
