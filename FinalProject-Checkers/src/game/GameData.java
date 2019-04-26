@@ -261,7 +261,7 @@ public class GameData {
 			}
 			System.out.println();
 		}
-		System.out.println("========================================");
+		
 	}
 	
 	public GameData copy(GameData original) {

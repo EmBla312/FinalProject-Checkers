@@ -43,6 +43,10 @@ public class Runner {
 		team = 3;	//let player go first
 		
 		while(!board.isGameOver(team)) {
+			System.out.println("========================================");
+				
+			board.printBoard();
+			
 			if(team == GameData.R_PAWN) {
 				System.out.println("========================================");
 				System.out.println("MY MOVE");
@@ -53,8 +57,6 @@ public class Runner {
 				System.out.println("YOUR MOVE");
 				System.out.println("========================================");
 			}
-				
-			board.printBoard();
 			
 			if(team == GameData.R_PAWN) {
 				legalMoves = board.getLegalMoves(team);
@@ -103,6 +105,9 @@ public class Runner {
 		team = 3;	//let player go first
 		
 		while(!board.isGameOver(team)) {
+			System.out.println("========================================");
+			
+			board.printBoard();
 			
 			if(team == GameData.R_PAWN) {
 				System.out.println("========================================");
@@ -115,7 +120,6 @@ public class Runner {
 				System.out.println("========================================");
 			}
 			
-			board.printBoard();
 			
 			if(team == GameData.R_PAWN) {
 				thisTurn = new AITree(200, board);
