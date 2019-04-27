@@ -35,19 +35,19 @@ public class Runner {
 		case 1:
 			playEasy();
 			break;
-		case 3:
+		case 2:
 			playMed();
 			break;
-		case 2:
+		case 3:
 			playHard();
 			break;
 		}
 	}
 	private static void playEasy() {
 		team = 3;	//let player go first
+		System.out.println("========================================");
 		
-		while(!board.isGameOver(team)) {
-			System.out.println("========================================");
+		while(!board.isGameOver(team)) {			
 				
 			board.printBoard();
 			
@@ -93,7 +93,6 @@ public class Runner {
 				
 				team = GameData.R_PAWN;
 			}
-			System.out.println("\n");
 		}	
 		
 		String winner;
@@ -108,9 +107,10 @@ public class Runner {
 	private static void playMed() {
 		team = 3;	//let player go first
 		
+		System.out.println("========================================");
+		
 		while(!board.isGameOver(team)) {
-			System.out.println("========================================");
-				
+			
 			board.printBoard();
 			
 			if(team == GameData.R_PAWN) {
@@ -155,7 +155,6 @@ public class Runner {
 				
 				team = GameData.R_PAWN;
 			}
-			System.out.println("\n");
 		}	
 		
 		String winner;
@@ -169,8 +168,9 @@ public class Runner {
 	private static void playHard() {
 		team = 3;	//let player go first
 		
+		System.out.println("========================================");
+		
 		while(!board.isGameOver(team)) {
-			System.out.println("========================================");
 			
 			board.printBoard();
 			
@@ -213,7 +213,6 @@ public class Runner {
 				
 				team = GameData.R_PAWN;
 			}
-			System.out.println("\n");
 		}	
 		
 		String winner;
