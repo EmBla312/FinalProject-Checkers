@@ -68,7 +68,12 @@ public class PriorityQueue <T> {
 			}
 			
 			data = currNode.getData();
-			currNode.getPrev().setNext(currNode.getNext());
+			if(numberOfEntries == 1) {
+				firstNode = null;
+			}
+			else
+				currNode.getPrev().setNext(null);
+			
 			numberOfEntries--;
 		}
 		
