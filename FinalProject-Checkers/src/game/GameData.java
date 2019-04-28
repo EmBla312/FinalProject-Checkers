@@ -141,7 +141,7 @@ public class GameData {
 		}
 	} // end getLegalMoves()
 	
-	//explain this method plz
+	
 	public PieceMove[] getLegalJumpsFrom(int team, int row, int col) {
 		
 		
@@ -162,17 +162,14 @@ public class GameData {
 	          moves.add(new PieceMove(row, col, row-2, col-2));
 	    }
 	    
-	    if (moves.isEmpty())
-	       return null;
-	    
-	    else {
+	   
 	    	
 	    	PieceMove[] moveArray = new PieceMove[moves.size()];
 			for(int i = 0; i < moves.size(); i++)
 				moveArray[i] = moves.get(i);
 	       
 	       return moveArray;
-	    }
+	    
 	}	//end legalJumps
 	
 	
