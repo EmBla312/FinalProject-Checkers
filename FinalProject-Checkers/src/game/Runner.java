@@ -372,7 +372,26 @@ public class Runner {
 					System.out.println(legalMoves.length); // testing
 					System.out.println("You must continue jumping.");
 					board.printBoard();
-					doMove(playerMove(move.getToRow(), move.getToCol()));
+					
+					legalMoves = board.getLegalMoves(team);
+					boolean illegalMove = true;
+					do {
+						PieceMove tempMove = playerMove(move.getToRow(), move.getToCol());
+						for(int i = 0; i < legalMoves.length; i++) {
+							if(isValidMove(tempMove, i)) {
+								illegalMove = false;
+							}
+
+
+						}
+						if(illegalMove)
+							System.out.println("Invalid Entry. Try again. \n");
+						else
+							doMove(tempMove);
+
+
+					}while(illegalMove);
+					
 
 				}
 				else {
