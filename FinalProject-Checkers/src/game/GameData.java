@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class GameData {
 	
-	public static final int EMPTY = 0;
+	private static final int EMPTY = 0;
 	public static final int R_PAWN = 1;
-	public static final int R_KING = 2;
 	public static final int W_PAWN = 3;
-	public static final int W_KING = 4;
+	private static final int R_KING = 2;
+	private static final int W_KING = 4;
 
 	private int[][] board; 
 
