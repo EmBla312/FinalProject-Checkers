@@ -3,16 +3,24 @@ import java.util.LinkedList; //
 import java.util.Iterator;
 
 public class AITree {
+	/**
+	 * The root of the AI general tree.
+	 */
 	Node root;
 
-	//constructs root and uses it to call makeTree
+	/**
+	 * Constructs a GTNode containing a GameData object and passes it to makeTree()
+	 * @param data This is the initial board to place in the root node.
+	 */
 	public AITree(int depth, GameData data) {
 		this.root = new Node(data);
 		makeTree(root, 1, -1);
 	}
 
-
-	//copies board of chosen node to GameData Board in runner
+	/**
+	 * calls evaluateLeaves and evaluateRestOfTree to assign a point weight to each node in tree, then chooses best move.
+	 * @return the best board based on the point weight.
+	 */
 	public GameData makeMove() {
 		evaluateLeaves(this.root, -1); //double-check team variable
 		evaluateRestOfTree(this.root, -1);
@@ -23,7 +31,11 @@ public class AITree {
 		
 	}
 
-	//gets the team that the teamVariable refers to
+	/**
+	 * Takes the teamVariable and determines which player it represents.
+	 * @param teamVariable This is either 1 or -1.
+	 * @return R_PAWN or W_PAWN.
+	 */
 	private int getTeam(int teamVariable) {
 		if (teamVariable == -1 ) {
 			return GameData.R_PAWN;
@@ -34,7 +46,12 @@ public class AITree {
 
 	}
 
-	//constructs tree to depth of 5
+	/**
+	 * Constructs a general tree of future board states up to 4 moves in the future.
+	 * @param node
+	 * @param depth This is the counter to keep track of the height of the tree through the recursive calls.
+	 * @param teamVariable This alternates between 1 and -1 to make sure the correct team moves.
+	 */
 	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
 		if (depth < 5) {
 			int team = getTeam(teamVariable);
@@ -49,7 +66,11 @@ public class AITree {
 		}
 	}
 
-	//finds the point weight for the tree's leaves
+	/**
+	 * Assigns a point weight to each leaf node based on the board it contains.
+	 * @param node 
+	 * @param teamVariable Represents the player whose turn it is.
+	 */
 	private void evaluateLeaves(Node node, int teamVariable) {
 		if (node.isLeaf()) {
 			node.setPoint_weight(node.getData().evaluateBoard(node.getData(), getTeam(teamVariable)));
@@ -63,7 +84,11 @@ public class AITree {
 		}
 	}
 
-	//finds the point weight for all nodes based on the leaves' point weight
+	/**
+	 * Assigns a point weight to each non-leaf node based on the point weight of its children.
+	 * @param node
+	 * @param teamVariable Represents the player whose turn it is.
+	 */
 	private void evaluateRestOfTree(Node node, int teamVariable) {
 		if (node.getChild().isLeaf()) {
 			node.setPoint_weight(node.minChildWeight()); //can assume that the leaves will always be playerMoves
@@ -83,39 +108,45 @@ public class AITree {
 		}
 	}
 
-	//finds point weight for a single board
-//	public int evaluateBoard(GameData board, int teamVariable) {
-//		int board_weight = 0;
-//		PieceMove[] boardAI = board.getLegalMoves(getTeam(teamVariable));
-//		PieceMove[] boardPlayer = board.getLegalMoves(getTeam(teamVariable*-1));
-//		if(boardPlayer.length == 0) {
-//			board_weight += 1000;
-//		}
-//		if(boardAI.length == 0) {
-//			board_weight -= 1000;
-//		}
-//		for (int i = 0; i < boardAI.length; i++) {
-//			board_weight += board.evaluateMove(boardAI, i);
-//		}
-//		return board_weight;
+//	//adds node to tree
+//	private void addChild(Node node, Node newNode) {
+//		node.addChild(newNode);
 //	}
 
-	//adds node to tree
-	private void addChild(Node node, Node newNode) {
-		node.addChild(newNode);
-	}
+//	/**
+//	 * Gets the root of the tree.
+//	 * @return the tree's root.
+//	 */
+//	private Node getRoot() {
+//		return this.root;
+//	}
 
-	//returns tree root
-	private Node getRoot() {
-		return this.root;
-	}
-
+	/**
+	 * The class for the nodes to construct the general tree.
+	 *
+	 */
 	private class Node {
+		/**
+		 * Each node contains a GameData object.
+		 */
 		private GameData  data;
+		/**
+		 * Each node contains a point weight for evaluating moves.
+		 */
 		private int point_weight;
+		/**
+		 * Points to the node's next sibling.
+		 */
 		private Node next;
+		/**
+		 * Points to the first of the node's children.
+		 */
 		private Node child;
 
+		/**
+		 * Creates a node with given data, a point weight of zero, and next and child set to null.
+		 * @param data This is the GameData object the node contains.
+		 */
 		private Node(GameData data) {
 			this.data = data;
 			this.point_weight = 0;
@@ -123,39 +154,68 @@ public class AITree {
 			this.child = null;
 		}
 
+		/**
+		 * Checks whether node is leaf
+		 * @return true if node has no children.
+		 */
 		private boolean isLeaf() {
 			return child == null;
 		}
 
+		/**
+		 * Gets the node's data.
+		 * @return the node's data.
+		 */
 		private GameData getData() {
 			return data;
 		}
-
+		/**
+		 * Sets the node's data.
+		 * @param data This is the data to set.
+		 */
 		private void setData(GameData data) {
 			this.data = data;
 		}
-
+		/**
+		 * Gets the node's point weight.
+		 * @return this node's point weight.
+		 */
 		private int getPoint_weight() {
 			return point_weight;
 		}
-
+		/**
+		 * Sets the node's point weight.
+		 * @param point_weight This is the int value to use as the point weight.
+		 */
 		private void setPoint_weight(int point_weight) {
 			this.point_weight = point_weight;
 		}
-
+		
+		/**
+		 * Gets the node's next sibling.
+		 * @return this node's next.
+		 */
 		private Node getNext() {
 			return next;
 		}
-
+		/**
+		 * Sets the node's next sibling.
+		 * @param next This is the node to set as the next.
+		 */
 		private void setNext(Node next) {
 			this.next = next;
 		}
-
-
+		/**
+		 * Gets the node's child.
+		 * @return the node's first child.
+		 */
 		private Node getChild() {
 			return child;
 		}
-
+		/**
+		 * Adds a child to the node. If the node already has children, the new child is added to the end of the list of children.
+		 * @param newChild This is the child to add.
+		 */
 		private void addChild(Node newChild) {
 			//Node newChild = new Node(data);
 			if (this.child == null) {
@@ -171,8 +231,10 @@ public class AITree {
 				currNode.setNext(newChild);
 			}
 		}
-
-		//returns the max point weight in children
+		/**
+		 * Determines the maximum point weight in the node's children.
+		 * @return the maximum point weight among the node's children.
+		 */
 		private int maxChildWeight() {
 			int max = this.child.getPoint_weight();
 
@@ -186,8 +248,10 @@ public class AITree {
 			}
 			return max;
 		}
-
-		//returns the min point weight in children
+		/**
+		 * Determines the minimum point weight in the node's children.
+		 * @return the minimum point weight among the node's children.
+		 */
 		private int minChildWeight() {
 			int min = this.child.getPoint_weight();
 
@@ -202,7 +266,10 @@ public class AITree {
 			return min;
 		}
 
-		//returns the data of the node that has the max point weight
+		/**
+		 * Gets the child node with the maximum point weight.
+		 * @return the child node with the maximum point weight.
+		 */
 		private GameData getMaxChild() {
 			int max = this.child.getPoint_weight();
 

@@ -251,6 +251,12 @@ public class GameData {
 		return weight;
 	}
 
+	/**
+	 * Calculates a point weight for a single board.
+	 * @param board This is the boarrd to be evaluated.
+	 * @param teamVariable Represents the player whose turn it is.
+	 * @return the point weight for the board.
+	 */
 	public int evaluateBoard(GameData board, int teamVariable) {
 		int board_weight = 0;
 		PieceMove[] boardAI = board.getLegalMoves(R_PAWN);
