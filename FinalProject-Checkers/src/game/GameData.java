@@ -69,7 +69,7 @@ public class GameData {
 			board[middleRow][middleCol] = EMPTY;
 		}
 		
-		if (toRow == 0 && board[toRow][toCol] == W_PAWN)
+		if (toRow == 0 && board[toRow][toCol] == W_PAWN) 
 			board[toRow][toCol] = W_KING;					//if reach backline, Promote piece
 		if (toRow == 7 && board[toRow][toCol] == R_PAWN)
 			board[toRow][toCol] = R_KING;
@@ -245,7 +245,6 @@ public class GameData {
 			
 			if(isKing(row, col)) 
 				weight += 2;
-			
 			else
 				weight++;
 		
@@ -262,6 +261,10 @@ public class GameData {
 		if(boardAI.length == 0) {
 			board_weight -= 1000;
 		}
+		int numJumps = getJumps(boardPlayer);
+		if(numJumps != 0)
+			board_weight -= numJumps * 11; //negates the +10 for AI being able to make a jump if the jump places its piece in danger. 
+			
 		for (int i = 0; i < boardAI.length; i++) {
 			board_weight += board.evaluateMove(boardAI, i);
 		}
