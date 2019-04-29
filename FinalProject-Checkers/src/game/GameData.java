@@ -362,7 +362,7 @@ public class GameData {
 		}
 		int numJumps = getJumps(boardPlayer);
 		if(numJumps != 0)
-			board_weight -= numJumps * 11; //negates the +10 for AI being able to make a jump if the jump places its piece in danger. 
+			board_weight -= numJumps * 20; //negates the +10 for AI being able to make a jump if the jump places its piece in danger. 
 
 		for (int i = 0; i < boardAI.length; i++) {
 			board_weight += board.evaluateMove(boardAI, i);
