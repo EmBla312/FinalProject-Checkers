@@ -53,7 +53,7 @@ public class AITree {
 	 * @param teamVariable This alternates between 1 and -1 to make sure the correct team moves.
 	 */
 	private void makeTree(Node node, int depth, int teamVariable) { //check this, then add evaluation of nodes when running
-		if (depth < 5) {
+		if (depth < 7) {
 			int team = getTeam(teamVariable);
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
 			Iterator<GameData> iter = listChildren.iterator();
