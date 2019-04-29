@@ -52,7 +52,7 @@ public class AITree {
 	//finds the point weight for the tree's leaves
 	private void evaluateLeaves(Node node, int teamVariable) {
 		if (node.isLeaf()) {
-			node.setPoint_weight(evaluateBoard(node.getData(), getTeam(teamVariable)));
+			node.setPoint_weight(node.getData().evaluateBoard(node.getData(), getTeam(teamVariable)));
 		}
 		else {
 			Node currNode = node.getChild();
@@ -84,29 +84,29 @@ public class AITree {
 	}
 
 	//finds point weight for a single board
-	private int evaluateBoard(GameData board, int teamVariable) {
-		int board_weight = 0;
-		PieceMove[] boardPM = board.getLegalMoves(getTeam(teamVariable));
-		PieceMove[] boardPlayer = board.getLegalMoves(getTeam(teamVariable*-1));
-		if(boardPlayer.length == 0) {
-			board_weight += 1000;
-		}
-		if(boardPM.length == 0) {
-			board_weight -= 1000;
-		}
-		for (int i = 0; i < boardPM.length; i++) {
-			board_weight += board.evaluateMove(boardPM, i);
-		}
-		return board_weight;
-	}
+//	public int evaluateBoard(GameData board, int teamVariable) {
+//		int board_weight = 0;
+//		PieceMove[] boardAI = board.getLegalMoves(getTeam(teamVariable));
+//		PieceMove[] boardPlayer = board.getLegalMoves(getTeam(teamVariable*-1));
+//		if(boardPlayer.length == 0) {
+//			board_weight += 1000;
+//		}
+//		if(boardAI.length == 0) {
+//			board_weight -= 1000;
+//		}
+//		for (int i = 0; i < boardAI.length; i++) {
+//			board_weight += board.evaluateMove(boardAI, i);
+//		}
+//		return board_weight;
+//	}
 
 	//adds node to tree
-	public void addChild(Node node, Node newNode) {
+	private void addChild(Node node, Node newNode) {
 		node.addChild(newNode);
 	}
 
 	//returns tree root
-	public Node getRoot() {
+	private Node getRoot() {
 		return this.root;
 	}
 
@@ -116,47 +116,47 @@ public class AITree {
 		private Node next;
 		private Node child;
 
-		public Node(GameData data) {
+		private Node(GameData data) {
 			this.data = data;
 			this.point_weight = 0;
 			this.next = null;
 			this.child = null;
 		}
 
-		public boolean isLeaf() {
+		private boolean isLeaf() {
 			return child == null;
 		}
 
-		public GameData getData() {
+		private GameData getData() {
 			return data;
 		}
 
-		public void setData(GameData data) {
+		private void setData(GameData data) {
 			this.data = data;
 		}
 
-		public int getPoint_weight() {
+		private int getPoint_weight() {
 			return point_weight;
 		}
 
-		public void setPoint_weight(int point_weight) {
+		private void setPoint_weight(int point_weight) {
 			this.point_weight = point_weight;
 		}
 
-		public Node getNext() {
+		private Node getNext() {
 			return next;
 		}
 
-		public void setNext(Node next) {
+		private void setNext(Node next) {
 			this.next = next;
 		}
 
 
-		public Node getChild() {
+		private Node getChild() {
 			return child;
 		}
 
-		public void addChild(Node newChild) {
+		private void addChild(Node newChild) {
 			//Node newChild = new Node(data);
 			if (this.child == null) {
 				this.child = newChild;
@@ -173,7 +173,7 @@ public class AITree {
 		}
 
 		//returns the max point weight in children
-		public int maxChildWeight() {
+		private int maxChildWeight() {
 			int max = this.child.getPoint_weight();
 
 			Node currNode = this.child;
@@ -188,7 +188,7 @@ public class AITree {
 		}
 
 		//returns the min point weight in children
-		public int minChildWeight() {
+		private int minChildWeight() {
 			int min = this.child.getPoint_weight();
 
 			Node currNode = this.child;
@@ -203,7 +203,7 @@ public class AITree {
 		}
 
 		//returns the data of the node that has the max point weight
-		public GameData getMaxChild() {
+		private GameData getMaxChild() {
 			int max = this.child.getPoint_weight();
 
 			Node currNode = this.child;

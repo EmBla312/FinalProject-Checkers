@@ -129,8 +129,11 @@ public class GameData {
 		}
 		
 		//if no moves it'll return null, else copy all moves into an array and return it.
-		if(moves.isEmpty())
-			return null;
+		if(moves.isEmpty()) {
+			PieceMove[] noMove = new PieceMove[0];
+			return noMove;
+		}
+			//return null;
 		
 		else { 
 			PieceMove[] moveArray = new PieceMove[moves.size()];
@@ -249,6 +252,22 @@ public class GameData {
 		return weight;
 	}
 
+	public int evaluateBoard(GameData board, int teamVariable) {
+		int board_weight = 0;
+		PieceMove[] boardAI = board.getLegalMoves(R_PAWN);
+		PieceMove[] boardPlayer = board.getLegalMoves(W_PAWN);
+		if(boardPlayer.length == 0) {
+			board_weight += 1000;
+		}
+		if(boardAI.length == 0) {
+			board_weight -= 1000;
+		}
+		for (int i = 0; i < boardAI.length; i++) {
+			board_weight += board.evaluateMove(boardAI, i);
+		}
+		return board_weight;
+	}
+	
 	public void printBoard() {
 		
 		System.out.println("   0 1 2 3 4 5 6 7");		
