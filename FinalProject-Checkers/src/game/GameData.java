@@ -192,8 +192,7 @@ public class GameData {
 
 		//if no moves it'll return null, else copy all moves into an array and return it.
 		if(moves.isEmpty()) {
-			PieceMove[] noMove = new PieceMove[1];
-			return noMove;
+			return null;
 		}
 		//return null;
 
@@ -234,8 +233,8 @@ public class GameData {
 		}
 
 		if (moves.isEmpty()) {
-			PieceMove[] noMove = new PieceMove[1];
-			return noMove;
+			
+			return null;
 		}
 		else {
 

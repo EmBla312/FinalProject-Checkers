@@ -108,16 +108,16 @@ public class Runner {
 
 				}while(illegalMove);
 
-				team = GameData.R_PAWN;
+				//team = GameData.R_PAWN;
 			}
 		}	
 
-		String winner;
-		if(team == GameData.W_PAWN)
-			winner = "AI Wins.";
-		else
-			winner = "You Win.";
-		System.out.println("GAME OVER. " + winner);  
+//		String winner;
+//		if(team == GameData.W_PAWN)
+//			winner = "AI Wins.";
+//		else
+//			winner = "You Win.";
+//		System.out.println("GAME OVER. " + winner);  
 
 	}
 	/**
@@ -178,13 +178,13 @@ public class Runner {
 				team = GameData.R_PAWN;
 			}
 		}	
-
-		String winner;
-		if(team == GameData.W_PAWN)
-			winner = "AI Wins.";
-		else
-			winner = "You Win.";
-		System.out.println("GAME OVER. " + winner);  
+//
+//		String winner;
+//		if(team == GameData.W_PAWN)
+//			winner = "AI Wins.";
+//		else
+//			winner = "You Win.";
+//		System.out.println("GAME OVER. " + winner);  
 
 	}
 	/**
@@ -243,12 +243,12 @@ public class Runner {
 			}
 		}	
 
-		String winner;
-		if(team == GameData.W_PAWN)
-			winner = "AI Wins.";
-		else
-			winner = "You Win.";
-		System.out.println("GAME OVER. " + winner);  
+//		String winner;
+//		if(team == GameData.W_PAWN)
+//			winner = "AI Wins.";
+//		else
+//			winner = "You Win.";
+//		System.out.println("GAME OVER. " + winner);  
 
 
 	}
@@ -357,7 +357,8 @@ public class Runner {
 	}
 
 	/**
-	 * Calls makeMove() with a PieceMove object. If the move is a jump, this method checks if the player must make a second jump.
+	 * Calls makeMove() with a PieceMove object. If the move is a jump, this method checks if the player must make a second jump. After Move, checks if opposing team has moves it can make.
+	 * If not, game over.
 	 * @param move
 	 */
 	private static void doMove(PieceMove move) {
@@ -370,6 +371,7 @@ public class Runner {
 				if (team == GameData.W_PAWN) {
 
 					System.out.println(legalMoves.length); // testing
+					System.out.println(legalMoves[0].getFromRow()+ " " + legalMoves[0].getFromCol()+ " " + legalMoves[0].getToRow()+ " " + legalMoves[0].getToCol()); //testing
 					System.out.println("You must continue jumping.");
 					board.printBoard();
 					
@@ -399,8 +401,29 @@ public class Runner {
 				}
 			}
 		}
+		
+		if(team == GameData.W_PAWN) {
+			team = GameData.R_PAWN;
+		}
+		else {
+			team = GameData.W_PAWN;
+		}
+		
+		if(board.getLegalMoves(team) == null) {
+			
+			board.printBoard();
+			
+			if(team == GameData.W_PAWN) {
+				System.out.println("GAME OVER. AI WINS.");
+			}
+			else {
+				System.out.println("GAME OVER. YOU WIN.");
+			}
+			
+		}
+			
 
-
+	
 
 	}  // end doMakeMove();
 
