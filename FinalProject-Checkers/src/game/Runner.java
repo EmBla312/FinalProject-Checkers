@@ -397,7 +397,7 @@ public class Runner {
 
 				}
 				else {
-					//AI Turn
+					doMove(legalMoves[0]);
 				}
 			}
 		}
