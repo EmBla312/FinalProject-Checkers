@@ -1,6 +1,7 @@
 package game;
 import java.util.Scanner;
 
+
 public class Runner {
 	private static int level;
 	private static GameData board = new GameData();
@@ -69,7 +70,7 @@ public class Runner {
 	
 					pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
 				}				
-				board.makeMove(pq.remove());				
+				doMove(pq.remove());				
 				pq.clear();
 				
 				team = GameData.W_PAWN;
@@ -82,12 +83,14 @@ public class Runner {
 					PieceMove tempMove = playerMove();
 					for(int i = 0; i < legalMoves.length; i++) {
 						if(isValidMove(tempMove, i)) {
-							board.makeMove(tempMove);
 							illegalMove = false;
 						}						
 					}
 					if(illegalMove)
 						System.out.println("Invalid Entry. Try again. \n");
+					else {
+						doMove(tempMove);
+					}
 				
 				}while(illegalMove);
 				
@@ -96,11 +99,11 @@ public class Runner {
 		}	
 		
 		String winner;
-		if(team == GameData.R_PAWN)
-			winner = "AI";
+		if(team == GameData.W_PAWN)
+			winner = "AI Wins.";
 		else
-			winner = "You";
-		System.out.println("GAME OVER. " + winner + " wins.");
+			winner = "You Win.";
+		System.out.println("GAME OVER. " + winner);  
 		
 	}
 	
@@ -131,7 +134,7 @@ public class Runner {
 	
 					pq.add( legalMoves[i] , board.evaluateMove(legalMoves,i));
 				}				
-				board.makeMove(pq.removeBack());				
+				doMove(pq.removeBack());				
 				pq.clear();
 				
 				team = GameData.W_PAWN;
@@ -144,12 +147,14 @@ public class Runner {
 					PieceMove tempMove = playerMove();
 					for(int i = 0; i < legalMoves.length; i++) {
 						if(isValidMove(tempMove, i)) {
-							board.makeMove(tempMove);
 							illegalMove = false;
 						}						
 					}
 					if(illegalMove)
 						System.out.println("Invalid Entry. Try again. \n");
+					else
+						doMove(tempMove);
+						
 				
 				}while(illegalMove);
 				
@@ -158,11 +163,12 @@ public class Runner {
 		}	
 		
 		String winner;
-		if(team == GameData.R_PAWN)
-			winner = "AI";
+		if(team == GameData.W_PAWN)
+			winner = "AI Wins.";
 		else
-			winner = "You";
-		System.out.println("GAME OVER. " + winner + " wins.");
+			winner = "You Win.";
+		System.out.println("GAME OVER. " + winner);  
+		
 	}
 	
 	private static void playHard() {
@@ -200,7 +206,6 @@ public class Runner {
 					PieceMove tempMove = playerMove();
 					for(int i = 0; i < legalMoves.length; i++) {
 						if(isValidMove(tempMove, i)) {
-							board.makeMove(tempMove);
 							illegalMove = false;
 						}
 						
@@ -208,6 +213,9 @@ public class Runner {
 					}
 					if(illegalMove)
 						System.out.println("Invalid Entry. Try again. \n");
+					else
+						doMove(tempMove);
+						
 				
 				}while(illegalMove);
 				
@@ -216,11 +224,12 @@ public class Runner {
 		}	
 		
 		String winner;
-		if(team == GameData.R_PAWN)
-			winner = "AI";
+		if(team == GameData.W_PAWN)
+			winner = "AI Wins.";
 		else
-			winner = "You";
-		System.out.println("GAME OVER. " + winner + " wins.");
+			winner = "You Win.";
+		System.out.println("GAME OVER. " + winner);  
+		
 		
 	}
 	
@@ -235,6 +244,15 @@ public class Runner {
 		
 		int fromRow = getFromRow();
 		int fromCol = getFromCol();
+		int toRow = getToRow();
+		int toCol = getToCol();
+		
+		PieceMove newMove = new PieceMove(fromRow, fromCol, toRow, toCol);
+		return newMove;
+	}
+	
+	private static PieceMove playerMove(int fromRow, int fromCol) {
+		
 		int toRow = getToRow();
 		int toCol = getToCol();
 		
@@ -289,5 +307,36 @@ public class Runner {
 
 		return fromCol;
 	}
+	
+	private static void doMove(PieceMove move) {
+		
+    board.makeMove(move);
+    
+  
+  
+    
+    if (move.isJump()) {
+       legalMoves = board.getLegalJumpsFrom(team,move.getToRow(),move.getToCol());
+       if (legalMoves != null) {
+          if (team == GameData.W_PAWN) {
+        	  
+        	  System.out.println(legalMoves.length); // testing
+             System.out.println("You must continue jumping.");
+             board.printBoard();
+             doMove(playerMove(move.getToRow(), move.getToCol()));
+             
+             
+          }
+          else {
+        	  //AI Turn
+          }
+       }
+    }
+    
+ 
+    
+ }  // end doMakeMove();
+	
+	
 
 }
