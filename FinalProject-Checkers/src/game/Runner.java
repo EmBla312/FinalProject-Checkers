@@ -7,14 +7,11 @@ public class Runner {
 	private static GameData board = new GameData();
 	private static int team;
 	private static Scanner sc = new Scanner(System.in);
-	private static PriorityQueue<PieceMove> pq = new PriorityQueue<>();
 	private static PieceMove[] legalMoves;
-	private static AITree thisTurn;
+
 	
 	public static void main(String[] args) {			
-		
 		playCheckers();	
-		
 	}
 	
 	private static void chooseLevel() {
@@ -45,6 +42,7 @@ public class Runner {
 		}
 	}
 	private static void playEasy() {
+		PriorityQueue<PieceMove> pq = new PriorityQueue<>();
 		team = 3;	//let player go first
 		System.out.println("========================================");
 		
@@ -108,6 +106,7 @@ public class Runner {
 	}
 	
 	private static void playMed() {
+		PriorityQueue<PieceMove> pq = new PriorityQueue<>();
 		team = 3;	//let player go first
 		
 		System.out.println("========================================");
@@ -172,6 +171,7 @@ public class Runner {
 	}
 	
 	private static void playHard() {
+		AITree thisTurn;
 		team = 3;	//let player go first
 		
 		System.out.println("========================================");
