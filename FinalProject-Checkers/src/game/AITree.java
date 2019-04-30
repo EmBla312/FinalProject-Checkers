@@ -26,9 +26,9 @@ public class AITree {
 		evaluateRestOfTree(this.root, -1);
 
 		GameData newBoard = this.root.getMaxChild();
-		
+
 		return newBoard;
-		
+
 	}
 
 	/**
@@ -56,14 +56,21 @@ public class AITree {
 		if (depth < 7) {
 			int team = getTeam(teamVariable);
 			LinkedList<GameData> listChildren = node.getData().getFutureBoards(node.getData(), team);
-			Iterator<GameData> iter = listChildren.iterator();
 
-			while (iter.hasNext()) {
-				Node newNode = new Node(iter.next());
-				node.addChild(newNode);
-				makeTree(newNode, depth + 1, teamVariable * -1); //alternates between teams for each recursive call
+			if (listChildren.size() == 0) {
+				return;
+			}
+			else {
+				Iterator<GameData> iter = listChildren.iterator();
+
+				while (iter.hasNext()) {
+					Node newNode = new Node(iter.next());
+					node.addChild(newNode);
+					makeTree(newNode, depth + 1, teamVariable * -1); //alternates between teams for each recursive call
+				}
 			}
 		}
+
 	}
 
 	/**
@@ -91,6 +98,12 @@ public class AITree {
 	 */
 	private void evaluateRestOfTree(Node node, int teamVariable) {
 		if (node.getChild().isLeaf()) {
+			if (getTeam(teamVariable) == GameData.R_PAWN) {
+				node.setPoint_weight(node.minChildWeight());
+			}
+			else {
+				node.setPoint_weight(node.maxChildWeight());
+			}
 			node.setPoint_weight(node.minChildWeight()); //can assume that the leaves will always be playerMoves
 		}
 		else {
@@ -107,19 +120,6 @@ public class AITree {
 			}
 		}
 	}
-
-//	//adds node to tree
-//	private void addChild(Node node, Node newNode) {
-//		node.addChild(newNode);
-//	}
-
-//	/**
-//	 * Gets the root of the tree.
-//	 * @return the tree's root.
-//	 */
-//	private Node getRoot() {
-//		return this.root;
-//	}
 
 	/**
 	 * The class for the nodes to construct the general tree.
@@ -190,7 +190,7 @@ public class AITree {
 		private void setPoint_weight(int point_weight) {
 			this.point_weight = point_weight;
 		}
-		
+
 		/**
 		 * Gets the node's next sibling.
 		 * @return this node's next.
@@ -217,7 +217,6 @@ public class AITree {
 		 * @param newChild This is the child to add.
 		 */
 		private void addChild(Node newChild) {
-			//Node newChild = new Node(data);
 			if (this.child == null) {
 				this.child = newChild;
 			}
@@ -283,7 +282,7 @@ public class AITree {
 				}
 				currNode = currNode.getNext();
 			}
-			
+
 			return bestBoard;
 		}
 	}

@@ -242,13 +242,14 @@ public class Runner {
 				team = GameData.R_PAWN;
 			}
 		}	
-
-//		String winner;
-//		if(team == GameData.W_PAWN)
-//			winner = "AI Wins.";
-//		else
-//			winner = "You Win.";
-//		System.out.println("GAME OVER. " + winner);  
+		board.printBoard();
+		String winner;
+		if(team == GameData.W_PAWN)
+			winner = "AI Wins.";
+		else
+			winner = "You Win.";
+		System.out.println("GAME OVER. " + winner);  
+		
 
 
 	}

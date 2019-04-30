@@ -183,9 +183,7 @@ public class GameData {
 
 						if (canMove(team,row,col,row-1,col-1))
 							moves.add(new PieceMove(row,col,row-1,col-1));
-
 					}
-
 				}
 			}
 		}
@@ -233,7 +231,7 @@ public class GameData {
 		}
 
 		if (moves.isEmpty()) {
-			
+
 			return null;
 		}
 		else {
@@ -354,10 +352,11 @@ public class GameData {
 		int board_weight = 0;
 		PieceMove[] boardAI = board.getLegalMoves(R_PAWN);
 		PieceMove[] boardPlayer = board.getLegalMoves(W_PAWN);
-		if(boardPlayer.length == 0) {
+
+		if(boardPlayer == null) {
 			board_weight += 1000;
 		}
-		if(boardAI.length == 0) {
+		if(boardAI == null) {
 			board_weight -= 1000;
 		}
 		int numJumps = getJumps(boardPlayer);
@@ -369,7 +368,7 @@ public class GameData {
 		}
 		return board_weight;
 	}
-	
+
 	/**
 	 * Counts the number of jumps in an array of legal moves.
 	 * @param movesArray This is the array of PieceMove objects to check for jumps.
@@ -377,10 +376,11 @@ public class GameData {
 	 */
 	private int getJumps(PieceMove[] movesArray) {
 		int jumps = 0;
-		
-		if (movesArray[0].isJump())
-			jumps = movesArray.length;
-		
+
+		if (movesArray != null) {
+			if (movesArray[0].isJump())
+				jumps = movesArray.length;
+		}
 		return jumps;
 	}
 
@@ -423,19 +423,21 @@ public class GameData {
 	 * @return a linked list of boards.
 	 */
 	public LinkedList<GameData> getFutureBoards(GameData board, int team) {
-		PieceMove[] depth1array = board.getLegalMoves(team);
+		PieceMove[] futureBoardsArray = board.getLegalMoves(team);
 
-		LinkedList<GameData> depth1 = new LinkedList<GameData>();
+		LinkedList<GameData> futureBoardsList = new LinkedList<GameData>();
 
 		GameData cpyBoard = copy(board);
 
-		for (int i = 0; i < depth1array.length; i++) {
-			cpyBoard.makeMove(depth1array[i]);
-			depth1.add(cpyBoard);
-			cpyBoard = copy(board);
+		if (futureBoardsArray != null) {
+			for (int i = 0; i < futureBoardsArray.length; i++) {
+				cpyBoard.makeMove(futureBoardsArray[i]);
+				futureBoardsList.add(cpyBoard);
+				cpyBoard = copy(board);
+			}
 		}
 
-		return depth1;
+		return futureBoardsList;
 	}
 }	
 
