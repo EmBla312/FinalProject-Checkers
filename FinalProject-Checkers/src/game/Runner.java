@@ -213,7 +213,7 @@ public class Runner {
 
 
 			if(team == GameData.R_PAWN) {
-				thisTurn = new AITree(200, board);
+				thisTurn = new AITree(7, board);
 				board = thisTurn.makeMove();
 
 				team = GameData.W_PAWN;
@@ -242,13 +242,13 @@ public class Runner {
 				team = GameData.R_PAWN;
 			}
 		}	
-		board.printBoard();
-		String winner;
-		if(team == GameData.W_PAWN)
-			winner = "AI Wins.";
-		else
-			winner = "You Win.";
-		System.out.println("GAME OVER. " + winner);  
+//		board.printBoard();
+//		String winner;
+//		if(team == GameData.W_PAWN)
+//			winner = "AI Wins.";
+//		else
+//			winner = "You Win.";
+//		System.out.println("GAME OVER. " + winner);  
 		
 
 
